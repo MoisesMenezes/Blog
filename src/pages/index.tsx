@@ -2,10 +2,18 @@ import type { GetStaticProps, NextPage } from "next";
 import { getPrismicClient } from "../services/prismic";
 import styles from "../styles/Home.module.css";
 import Prismic from "@prismicio/client";
+import PostCard from "./components/PostCard";
 
 interface PostProps {
   slug: string;
-  thumbnail: string;
+  thumbnail: {
+    alt: string;
+    url: string;
+    dimensions: {
+      width: number;
+      height: number;
+    };
+  };
   title: string;
 }
 interface HomeProps {
@@ -13,14 +21,10 @@ interface HomeProps {
 }
 
 const Home = ({ posts }: HomeProps) => {
-  console.log("POSTS", posts);
-
   return (
     <div className={styles.container}>
       {posts.map((post) => (
-        <>
-          <h1>{post.title}</h1>
-        </>
+        <PostCard post={post} key={post.slug} />
       ))}
     </div>
   );
@@ -37,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = response.results.map((post) => {
     return {
       slug: post.uid,
-      thumbnail: post.data.thumbnail.url,
+      thumbnail: post.data.thumbnail,
       title: post.data.title[0].text,
     };
   });
@@ -46,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
     },
+    revalidate: 60 * 60 * 24, // 24 hours
   };
 };
 
