@@ -12,6 +12,3 @@ export function getPrismicClient(req?: unknown): DefaultClient {
 
   return prismic;
 }
-
-//TODO
-// VER O ENV VIR UNDEFINED
