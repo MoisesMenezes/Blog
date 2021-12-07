@@ -8,7 +8,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.7.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@prismicio/client": "^5.1.0",
+    "framer-motion": "^4",
     "next": "12.0.4",
     "prismic-dom": "^2.2.6",
     "react": "17.0.2",
@@ -16,8 +20,8 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@types/prismic-dom": "^2.1.1",
     "@types/node": "16.11.10",
+    "@types/prismic-dom": "^2.1.1",
     "@types/react": "17.0.37",
     "@types/styled-components": "^5.1.15",
     "eslint": "7",

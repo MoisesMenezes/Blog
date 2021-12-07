@@ -77,6 +77,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         day: "2-digit",
         month: "long",
         year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
       }),
   };
 
