@@ -3,6 +3,7 @@ import { getPrismicClient } from "../services/prismic";
 import styles from "../styles/Home.module.css";
 import Prismic from "@prismicio/client";
 import PostCard from "./components/PostCard";
+import { Box, Grid, HStack, VStack } from "@chakra-ui/react";
 
 interface PostProps {
   slug: string;
@@ -22,11 +23,13 @@ interface HomeProps {
 
 const Home = ({ posts }: HomeProps) => {
   return (
-    <div className={styles.container}>
-      {posts.map((post) => (
-        <PostCard post={post} key={post.slug} />
-      ))}
-    </div>
+    <Box as="section">
+      <Grid templateColumns={{ md: "repeat(2,1fr)" }} justifyItems="center">
+        {posts.map((post) => (
+          <PostCard post={post} key={post.slug} />
+        ))}
+      </Grid>
+    </Box>
   );
 };
 

@@ -1,7 +1,6 @@
-import Image from "next/image";
-import * as S from "./styles";
-import Router from "next/router";
 import Link from "next/link";
+import { Box, Heading } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 
 interface Post {
   slug: string;
@@ -21,20 +20,46 @@ interface PostCardProps {
 }
 
 function PostCard({ post }: PostCardProps) {
-  const handleClick = () => {
-    Router.push(`post/${post.slug}`);
-  };
-
   return (
     <Link href={`post/${post.slug}`} passHref>
       <a>
-        <Image
-          src={post.thumbnail.url}
-          width={post.thumbnail.dimensions.width}
-          height={post.thumbnail.dimensions.height}
-          alt={post.thumbnail?.alt}
-        />
-        <h2>{post.title}</h2>
+        <Box
+          bg="white"
+          borderRadius={8}
+          h="280px"
+          w="550px"
+          overflow="hidden"
+          position="relative"
+        >
+          {/* TODO colocar animação do grayScale */}
+
+          <Image
+            src={post.thumbnail.url}
+            objectFit="cover"
+            objectPosition="center"
+            alt={post.thumbnail?.alt}
+            filter="grayscale(75%)"
+            _hover={{
+              filter: "grayscale(0)",
+            }}
+          />
+
+          <Box padding="1rem" position="absolute" bottom="0">
+            <Heading
+              as="h2"
+              size="lg"
+              lineHeight="0.9"
+              w="fit-content"
+              bgColor="white"
+              px="5px"
+            >
+              Machu Picchu
+            </Heading>
+            <Heading as="h5" size="sm" w="fit-content" bgColor="white" px="5px">
+              Teste de letra
+            </Heading>
+          </Box>
+        </Box>
       </a>
     </Link>
   );
