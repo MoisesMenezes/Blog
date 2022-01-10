@@ -1,8 +1,9 @@
 import type { GetStaticProps } from "next";
 import { getPrismicClient } from "../services/prismic";
+import Image from "next/Image";
 import Prismic from "@prismicio/client";
 import PostCard from "../components/PostCard";
-import { Box, Grid } from "@chakra-ui/react";
+import { Box, Grid, Heading } from "@chakra-ui/react";
 import { PostProps } from "../types/post";
 
 interface HomeProps {
@@ -11,17 +12,39 @@ interface HomeProps {
 
 const Home = ({ posts }: HomeProps) => {
   return (
-    <Box as="section" p="1rem">
-      <Grid
-        templateColumns={{ lg: "repeat(2,1fr)", "2xl": "repeat(3,1fr)" }}
-        justifyItems="center"
-        gap="1rem"
-      >
-        {posts.map((post) => (
-          <PostCard post={post} key={post.slug} />
-        ))}
+    <>
+      <Grid position="relative">
+        <Heading
+          as="h1"
+          zIndex={100}
+          position="absolute"
+          justifySelf="center"
+          pt={19}
+          fontSize={{ sm: "3rem", md: "5rem", lg: "8rem", xl: "10rem" }}
+          fontFamily="Pacifico"
+        >
+          Let&apos;s Travel
+        </Heading>
+        <Image
+          src="/bighero.jpg"
+          width={1440}
+          height={600}
+          layout="responsive"
+          alt="Let's travel"
+        />
       </Grid>
-    </Box>
+      <Box as="section" p="1rem" mt={{ md: "4rem", lg: "8rem" }}>
+        <Grid
+          templateColumns={{ lg: "repeat(2,1fr)", "2xl": "repeat(3,1fr)" }}
+          justifyItems="center"
+          gap="1rem"
+        >
+          {posts.map((post) => (
+            <PostCard post={post} key={post.slug} />
+          ))}
+        </Grid>
+      </Box>
+    </>
   );
 };
 
