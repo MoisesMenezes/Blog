@@ -5,6 +5,7 @@ import Prismic from "@prismicio/client";
 import PostCard from "../components/PostCard";
 import { Box, Grid, Heading } from "@chakra-ui/react";
 import { PostProps } from "../types/post";
+import Header from "../components/Header";
 
 interface HomeProps {
   posts: PostProps[];
@@ -13,22 +14,23 @@ interface HomeProps {
 const Home = ({ posts }: HomeProps) => {
   return (
     <>
+      <Header />
       <Grid position="relative">
         <Heading
           as="h1"
           zIndex={100}
           position="absolute"
-          justifySelf="center"
-          pt={19}
+          placeSelf="center"
+          color="#FFF"
           fontSize={{ sm: "3rem", md: "5rem", lg: "8rem", xl: "10rem" }}
           fontFamily="Pacifico"
         >
           Let&apos;s Travel
         </Heading>
         <Image
-          src="/bighero.jpg"
-          width={1440}
-          height={600}
+          src="/bighero2.jpg"
+          width={1400}
+          height={510}
           layout="responsive"
           alt="Let's travel"
         />
