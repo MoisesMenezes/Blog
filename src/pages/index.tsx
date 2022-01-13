@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 import { getPrismicClient } from "../services/prismic";
-import Image from "next/Image";
+import Image from "next/image";
 import Prismic from "@prismicio/client";
 import PostCard from "../components/PostCard";
 import { Box, Grid, Heading } from "@chakra-ui/react";
@@ -30,7 +30,7 @@ const Home = ({ posts }: HomeProps) => {
         <Image
           src="/bighero2.jpg"
           width={1400}
-          height={510}
+          height={410}
           layout="responsive"
           alt="Let's travel"
         />
