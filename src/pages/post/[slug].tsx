@@ -1,14 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import { getPrismicClient } from "../../services/prismic";
 import Prismic from "@prismicio/client";
 import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { RichText } from "prismic-dom";
+import { Box, Grid, Heading } from "@chakra-ui/react";
 
 type PostContent = {
   title: string;
-  updatedAt: string;
   content: string;
+  thumbnail: string;
+  subtitle: string;
 };
 
 interface PostProps {
@@ -18,19 +21,45 @@ interface PostProps {
 export const Post = ({ post }: PostProps) => {
   const router = useRouter();
 
-  console.log("post", post);
-
   return router.isFallback ? (
     <h1>Carregando</h1>
   ) : (
     <>
       <main>
-        <h1>{post.title}</h1>
-        <span>{post.updatedAt}</span>
+        <Image
+          src={post.thumbnail}
+          width={1400}
+          height={600}
+          layout="responsive"
+          alt={post.title}
+        />
+        <Box p={{ base: "1rem", lg: "3rem 2rem" }}>
+          <Heading
+            as="h1"
+            fontFamily="Pacifico"
+            fontSize={{ base: "2.5rem", md: "5rem", lg: "7rem", xl: "9rem" }}
+          >
+            {post.title}
+          </Heading>
+          <Heading
+            as="h2"
+            fontFamily="Pacifico"
+            mt="2.2rem"
+            fontSize={{ base: "1rem", md: "2rem", lg: "3rem", xl: "3.5rem" }}
+          >
+            {post.subtitle}
+          </Heading>
+        </Box>
 
-        <article>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        </article>
+        <Box as="article" p={{ base: "1rem", md: "1rem 2rem" }}>
+          <Grid
+            fontSize={{ base: "1rem", md: "1.5rem" }}
+            fontFamily="Roboto"
+            gap="1.2rem"
+            justifyItems="center"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </Box>
       </main>
     </>
   );
@@ -70,16 +99,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const post = {
     title: response.data.title[0].text,
+    thumbnail: response.data.thumbnail.url,
+    subtitle: response.data.subtitle[0].text,
     content: RichText.asHtml(response.data.content),
-    updatedAt:
-      response.last_publication_date &&
-      new Date(response.last_publication_date).toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
   };
 
   return {

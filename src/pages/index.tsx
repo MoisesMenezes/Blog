@@ -14,28 +14,30 @@ interface HomeProps {
 const Home = ({ posts }: HomeProps) => {
   return (
     <>
-      <Header />
       <Grid position="relative">
         <Heading
           as="h1"
           zIndex={100}
+          maxW="75%"
+          left="0"
           position="absolute"
-          placeSelf="center"
+          placeSelf="end"
+          p="0 1rem 2rem 1rem"
           color="#FFF"
-          fontSize={{ sm: "3rem", md: "5rem", lg: "8rem", xl: "10rem" }}
-          fontFamily="Pacifico"
+          fontSize={{ sm: "1.5rem", md: "3rem", lg: "4rem", xl: "6rem" }}
         >
-          Let&apos;s Travel
+          Get new Experience and Greater Adventures.
         </Heading>
         <Image
-          src="/bighero2.jpg"
-          width={1400}
-          height={410}
+          src="/bighero2.jfif"
+          width={1200}
+          height={550}
           layout="responsive"
           alt="Let's travel"
         />
       </Grid>
       <Box as="section" p="1rem" mt={{ md: "4rem", lg: "8rem" }}>
+        <Heading pb="1rem">Latest Post</Heading>
         <Grid
           templateColumns={{ lg: "repeat(2,1fr)", "2xl": "repeat(3,1fr)" }}
           justifyItems="center"

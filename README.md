@@ -2,7 +2,9 @@
 
 Construido com:
 
+- React
 - NextJs
 - Typescript
+- Chakra-ui
 
-[Preview do Site](https://blog-steel-theta-75.vercel.app/)
+[Preview do Site](https://blog-moisesmenezes.vercel.app/)
