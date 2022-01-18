@@ -1,6 +1,10 @@
-## Blog
+<div align="center"> 
+  
+![logo](/public/assets/logogit.svg)
+ 
+</div>
 
-![This is an image]('/public/assets/logogit.svg')
+##
 
 Construido com:
 
