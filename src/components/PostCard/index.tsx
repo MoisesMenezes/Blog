@@ -30,7 +30,7 @@ function PostCard({ post }: PostCardProps) {
           <Heading
             as="h2"
             size="lg"
-            lineHeight="0.9"
+            lineHeight="1.3"
             w="fit-content"
             bgColor="white"
             px="5px"

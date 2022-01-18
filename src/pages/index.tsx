@@ -6,6 +6,7 @@ import PostCard from "../components/PostCard";
 import { Box, Grid, Heading } from "@chakra-ui/react";
 import { PostProps } from "../types/post";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 interface HomeProps {
   posts: PostProps[];
@@ -14,6 +15,7 @@ interface HomeProps {
 const Home = ({ posts }: HomeProps) => {
   return (
     <>
+      <Header />
       <Grid position="relative">
         <Heading
           as="h1"
@@ -36,7 +38,7 @@ const Home = ({ posts }: HomeProps) => {
           alt="Let's travel"
         />
       </Grid>
-      <Box as="section" p="1rem" mt={{ md: "4rem", lg: "8rem" }}>
+      <Box as="section" p="1rem" mt={{ md: "2rem", lg: "3rem" }}>
         <Heading pb="1rem">Latest Post</Heading>
         <Grid
           templateColumns={{ lg: "repeat(2,1fr)", "2xl": "repeat(3,1fr)" }}
@@ -48,6 +50,7 @@ const Home = ({ posts }: HomeProps) => {
           ))}
         </Grid>
       </Box>
+      <Footer />
     </>
   );
 };

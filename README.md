@@ -1,5 +1,7 @@
 ## Blog
 
+![This is an image]('/public/assets/logogit.svg')
+
 Construido com:
 
 - React

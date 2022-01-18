@@ -6,6 +6,7 @@ import { ParsedUrlQuery } from "querystring";
 import { useRouter } from "next/router";
 import { RichText } from "prismic-dom";
 import { Box, Grid, Heading } from "@chakra-ui/react";
+import Header from "../../components/Header";
 
 type PostContent = {
   title: string;
@@ -25,6 +26,7 @@ export const Post = ({ post }: PostProps) => {
     <h1>Carregando</h1>
   ) : (
     <>
+      <Header />
       <main>
         <Image
           src={post.thumbnail}
@@ -56,8 +58,15 @@ export const Post = ({ post }: PostProps) => {
             fontSize={{ base: "1rem", md: "1.5rem" }}
             fontFamily="Roboto"
             gap="1.2rem"
-            justifyItems="center"
             dangerouslySetInnerHTML={{ __html: post.content }}
+            css={{
+              ".block-img": {
+                justifySelf: "center",
+              },
+              ul: {
+                paddingLeft: "2rem",
+              },
+            }}
           />
         </Box>
       </main>
