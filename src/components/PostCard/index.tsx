@@ -8,7 +8,6 @@ interface PostCardProps {
 }
 
 function PostCard({ post }: PostCardProps) {
-  console.log("post", post);
   return (
     <Link href={`post/${post.slug}`} passHref>
       <a style={{ position: "relative" }}>
@@ -20,10 +19,11 @@ function PostCard({ post }: PostCardProps) {
           objectFit="cover"
           objectPosition="center"
           alt={post.thumbnail?.alt}
-          filter="grayscale(75%)"
+          filter="grayscale(90%)"
           _hover={{
             filter: "grayscale(0)",
           }}
+          transition="all 0.8s"
         />
 
         <Box padding="1rem" position="absolute" bottom="0">
