@@ -7,6 +7,7 @@ import { Box, Grid, Heading } from "@chakra-ui/react";
 import { PostProps } from "../types/post";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { SEO } from "../components/SEO";
 
 interface HomeProps {
   posts: PostProps[];
@@ -15,6 +16,10 @@ interface HomeProps {
 const Home = ({ posts }: HomeProps) => {
   return (
     <>
+      <SEO
+        title="Travel Blog | Home"
+        description="Travel blog os melhores destinos para viajar"
+      />
       <Header />
       <Grid position="relative">
         <Heading

@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { RichText } from "prismic-dom";
 import { Box, Grid, Heading } from "@chakra-ui/react";
 import Header from "../../components/Header";
+import { SEO } from "../../components/SEO";
 
 type PostContent = {
   title: string;
@@ -26,6 +27,7 @@ export const Post = ({ post }: PostProps) => {
     <h1>Carregando</h1>
   ) : (
     <>
+      <SEO title={post?.title} description={post.subtitle} />
       <Header />
       <main>
         <Image
@@ -35,39 +37,41 @@ export const Post = ({ post }: PostProps) => {
           layout="responsive"
           alt={post.title}
         />
-        <Box p={{ base: "1rem", lg: "3rem 2rem" }}>
-          <Heading
-            as="h1"
-            fontFamily="Pacifico"
-            fontSize={{ base: "2.5rem", md: "5rem", lg: "7rem", xl: "9rem" }}
-          >
-            {post.title}
-          </Heading>
-          <Heading
-            as="h2"
-            fontFamily="Pacifico"
-            mt="2.2rem"
-            fontSize={{ base: "1rem", md: "2rem", lg: "3rem", xl: "3.5rem" }}
-          >
-            {post.subtitle}
-          </Heading>
-        </Box>
+        <Box as="article" maxWidth="1440" m="0 auto">
+          <Box p={{ base: "1rem", lg: "3rem 2rem" }}>
+            <Heading
+              as="h1"
+              fontFamily="Pacifico"
+              fontSize={{ base: "2.5rem", md: "5rem", lg: "7rem", xl: "9rem" }}
+            >
+              {post.title}
+            </Heading>
+            <Heading
+              as="h2"
+              fontFamily="Pacifico"
+              mt="2.2rem"
+              fontSize={{ base: "1rem", md: "2rem", lg: "3rem", xl: "3.5rem" }}
+            >
+              {post.subtitle}
+            </Heading>
+          </Box>
 
-        <Box as="article" p={{ base: "1rem", md: "1rem 2rem" }}>
-          <Grid
-            fontSize={{ base: "1rem", md: "1.5rem" }}
-            fontFamily="Roboto"
-            gap="1.2rem"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-            css={{
-              ".block-img": {
-                justifySelf: "center",
-              },
-              ul: {
-                paddingLeft: "2rem",
-              },
-            }}
-          />
+          <Box p={{ base: "1rem", md: "1rem 2rem" }}>
+            <Grid
+              fontSize={{ base: "1rem", md: "1.5rem" }}
+              fontFamily="Roboto"
+              gap="1.2rem"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              css={{
+                ".block-img": {
+                  justifySelf: "center",
+                },
+                ul: {
+                  paddingLeft: "2rem",
+                },
+              }}
+            />
+          </Box>
         </Box>
       </main>
     </>
